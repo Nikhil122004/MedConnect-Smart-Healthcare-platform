@@ -6,16 +6,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ✅ Connect to MongoDB
+// Connect to MongoDB
 mongoose
   .connect("mongodb://127.0.0.1:27017/reviewsDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("✅ Connected to MongoDB"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(() => console.log("Connected to MongoDB"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-// ✅ Schema & Model
+// Review Schema & Model
 const reviewSchema = new mongoose.Schema({
   name: String,
   text: String,
@@ -24,7 +24,19 @@ const reviewSchema = new mongoose.Schema({
 
 const Review = mongoose.model("Review", reviewSchema);
 
-// ✅ Routes
+// Appointment Schema & Model
+const appointmentSchema = new mongoose.Schema({
+  fullName: String,
+  email: String,
+  phone: String,
+  state: String,
+  department: String,
+  date: String,
+});
+
+const Appointment = mongoose.model("Appointment", appointmentSchema);
+
+// Routes - Reviews
 app.get("/reviews", async (req, res) => {
   try {
     const reviews = await Review.find();
@@ -44,5 +56,20 @@ app.post("/reviews", async (req, res) => {
   }
 });
 
+// Routes - Appointments
+app.post("/appointments", async (req, res) => {
+  try {
+    const newAppointment = new Appointment(req.body);
+    await newAppointment.save();
+    res.json({
+      message:
+        "Thanks for booking appointment. In 24 hours, you will receive a confirmation message.",
+      appointment: newAppointment,
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Error booking appointment", error: err });
+  }
+});
+
 // Start Server
-app.listen(5000, () => console.log("✅ Server running on http://localhost:5000"));
+app.listen(5000, () => console.log("Server running on http://localhost:5000"));

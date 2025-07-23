@@ -1,0 +1,238 @@
+.about-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 50px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fc;
+}
+
+/* Intro Section */
+.intro-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.intro-text {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 20px;
+}
+
+.heading {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.paragraph {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+}
+
+.highlight {
+  color: #f10c0cff;
+  font-weight: bold;
+}
+
+.learn-more-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background-color: #f10c0cff;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.learn-more-button:hover {
+  background-color: #333;
+}
+
+/* Founder Card */
+.founder-card {
+  flex: 0 0 280px;
+  background: #fff;
+  text-align: center;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.founder-image {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.founder-name {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.founder-title {
+  color: #777;
+  font-size: 1rem;
+}
+
+/* Locations */
+.locations-section {
+  margin-top: 50px;
+}
+
+.locations-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.locations-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 100px;
+}
+
+.left-column {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.location-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.location-heading {
+  font-size: 1.3rem;
+  color: #f10c0cff;
+  margin-bottom: 8px;
+}
+
+.location-text {
+  color: #555;
+}
+
+.map-container {
+  flex: 1;
+  min-width: 450px;
+  height: 450px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Reviews */
+.reviews-section {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.reviews-heading {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.reviews-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+
+.review-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: left;
+}
+
+.stars {
+  color: #FFD700;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.review-text {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  color: #f10c0cff;
+}
+
+/* Add Review Button */
+.add-review-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #f10c0cff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 32px;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Review Form */
+.review-form {
+  margin-top: 40px;
+  padding: 20px 50px 20px 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  margin: 40px auto;
+  text-align: left;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.input,
+.textarea,
+select.input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.textarea {
+  height: 80px;
+}
+
+.submit-btn {
+  background-color: #f10c0cff;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}

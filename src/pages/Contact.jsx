@@ -16,7 +16,7 @@ function Contact() {
 
   return (
     <div style={styles.container}>
-      {/* Left Side: Company Contact Info */}
+     
       <div style={styles.infoBox}>
         <h2 style={styles.heading}>Get in Touch</h2>
         <p style={styles.text}>
@@ -27,7 +27,7 @@ function Contact() {
         <p><strong>Address:</strong> MedConnect HQ, New Delhi, India</p>
       </div>
 
-      {/* Right Side: Contact Form */}
+      
       <div style={styles.formBox}>
         <h3 style={styles.formHeading}>Send Us a Message</h3>
         <form onSubmit={handleSubmit} style={styles.form}>
