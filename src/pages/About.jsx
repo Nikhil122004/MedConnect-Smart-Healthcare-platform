@@ -29,11 +29,15 @@ function About() {
         });
 
         const data = await response.json();
-        console.log(data.message);
-
-        setReviews([...reviews, newReview]);
-        setNewReview({ name: "", text: "", stars: 5 });
-        setShowForm(false);
+        if (response.ok) {
+          // Add review returned from server (with MongoDB _id)
+          setReviews([...reviews, data.review]);
+          setNewReview({ name: "", text: "", stars: 5 });
+          setShowForm(false);
+        } else {
+          console.error("Error:", data.message);
+          alert(data.message);
+        }
       } catch (error) {
         console.error("Error saving review:", error);
       }
@@ -110,8 +114,8 @@ function About() {
       <div className="reviews-section">
         <h2 className="reviews-heading">What Our Customers Say</h2>
         <div className="reviews-grid">
-          {reviews.map((review, index) => (
-            <div className="review-card" key={index}>
+          {reviews.map((review) => (
+            <div className="review-card" key={review._id}>
               <div className="stars">
                 {"★".repeat(review.stars)}{"☆".repeat(5 - review.stars)}
               </div>

@@ -1,63 +1,154 @@
 import React, { useState } from "react";
 
 function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    teamSize: "1-50 people",
+    location: "India",
+    message: "",
+    agree: false,
+  });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Thank you, ${formData.name}! We will contact you soon.`);
-    setFormData({ name: "", email: "", message: "" });
+
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        alert(`✅ Thank you, ${formData.firstName}! Your info is saved.`);
+      } else {
+        alert("❌ Something went wrong: " + data.error);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("⚠️ Server error, please try again later.");
+    }
+
+    // Reset form
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      teamSize: "1-50 people",
+      location: "India",
+      message: "",
+      agree: false,
+    });
   };
 
   return (
     <div style={styles.container}>
-     
-      <div style={styles.infoBox}>
-        <h2 style={styles.heading}>Get in Touch</h2>
-        <p style={styles.text}>
-          Have questions? We are here to help you.
-        </p>
-        <p><strong>Email:</strong> support@medconnect.com</p>
-        <p><strong>Phone:</strong> +91 98765 43210</p>
-        <p><strong>Address:</strong> MedConnect HQ, New Delhi, India</p>
+      {/* Left Side */}
+      <div style={styles.left}>
+        <h2>MedConnect</h2>
+        <p>We’d love to help. Reach out and we’ll get in touch within 24 hours.</p>
+        <img
+          src="/icon.png" // Replace with your image or illustration
+          alt="Team"
+          style={{ width: "100%", marginTop: "20px" }}
+        />
+        <div style={{ marginTop: "20px" }}>
+          <p>📧 support@medconnect.com</p>
+          <p>📞 +91 98765 43210</p>
+          <p>📍 MedConnect HQ, New Delhi, India</p>
+        </div>
       </div>
 
-      
-      <div style={styles.formBox}>
-        <h3 style={styles.formHeading}>Send Us a Message</h3>
-        <form onSubmit={handleSubmit} style={styles.form}>
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            style={styles.input}
-            required
-          />
+      {/* Right Side Form */}
+      <div style={styles.right}>
+        <form style={styles.form} onSubmit={handleSubmit}>
+          <div style={styles.row}>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              value={formData.firstName}
+              onChange={handleChange}
+              style={styles.input}
+              required
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              value={formData.lastName}
+              onChange={handleChange}
+              style={styles.input}
+              required
+            />
+          </div>
           <input
             type="email"
             name="email"
-            placeholder="Your Email"
+            placeholder="Email"
             value={formData.email}
             onChange={handleChange}
             style={styles.input}
             required
           />
+          <div style={styles.row}>
+            <select
+              name="teamSize"
+              value={formData.teamSize}
+              onChange={handleChange}
+              style={styles.select}
+            >
+              <option value="1-50 people">1-10 staff</option>
+              <option value="51-200 people">20-40 staff</option>
+              <option value="201-500 people">40-65 staff</option>
+              <option value="500+ people">100+ staff</option>
+            </select>
+            <select
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              style={styles.select}
+            >
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Bengaluru">Bengaluru</option>
+            </select>
+          </div>
           <textarea
             name="message"
-            placeholder="Your Message"
+            placeholder="Leave us a message..."
             value={formData.message}
             onChange={handleChange}
             style={styles.textarea}
             required
           ></textarea>
-          <button type="submit" style={styles.button}>Send</button>
+          <div style={styles.checkbox}>
+            <input
+              type="checkbox"
+              name="agree"
+              checked={formData.agree}
+              onChange={handleChange}
+              required
+            />
+            <label style={{ marginLeft: "8px" }}>
+              You agree to our friendly <a href="#">privacy policy</a>.
+            </label>
+          </div>
+          <button type="submit" style={styles.button}>
+            Send message
+          </button>
         </form>
       </div>
     </div>
@@ -67,66 +158,65 @@ function Contact() {
 const styles = {
   container: {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    gap: "40px",
-    padding: "40px",
-    maxWidth: "1000px",
+    maxWidth: "1200px",
     margin: "50px auto",
-    background: "#fff",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
-    borderRadius: "10px",
+    background: "#d5d3d3ff",
+    borderRadius: "12px",
+    overflow: "hidden",
+    boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
   },
-  infoBox: {
+  left: {
     flex: 1,
-    padding: "20px",
+    padding: "40px",
+    background: "linear-gradient(135deg, #212029ff, #3a3fef)",
+    color: "#fff",
+    borderRadius: "20%",
   },
-  heading: {
-    fontSize: "28px",
-    color: "#fa1134",
-    marginBottom: "10px",
-  },
-  text: {
-    fontSize: "16px",
-    color: "#444",
-    marginBottom: "15px",
-  },
-  formBox: {
+  right: {
     flex: 1,
-    padding: "20px",
-    background: "#f9f9f9",
-    borderRadius: "8px",
-  },
-  formHeading: {
-    fontSize: "20px",
-    marginBottom: "15px",
-    color: "#333",
+    padding: "40px",
   },
   form: {
     display: "flex",
     flexDirection: "column",
-    gap: "12px",
+    gap: "15px",
+  },
+  row: {
+    display: "flex",
+    gap: "10px",
   },
   input: {
-    padding: "10px",
+    flex: 1,
+    padding: "12px",
+    borderRadius: "8px",
     border: "1px solid #ccc",
-    borderRadius: "5px",
+    fontSize: "14px",
+  },
+  select: {
+    flex: 1,
+    padding: "12px",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
     fontSize: "14px",
   },
   textarea: {
-    padding: "10px",
+    padding: "12px",
+    borderRadius: "8px",
     border: "1px solid #ccc",
-    borderRadius: "5px",
-    fontSize: "14px",
     resize: "none",
-    height: "80px",
+    fontSize: "14px",
+    height: "100px",
+  },
+  checkbox: {
+    display: "flex",
+    alignItems: "center",
   },
   button: {
-    padding: "10px",
-    background: "#fa1134",
+    padding: "14px",
+    background: "#7f030dff",
     color: "#fff",
     border: "none",
-    borderRadius: "5px",
+    borderRadius: "8px",
     fontSize: "16px",
     cursor: "pointer",
   },

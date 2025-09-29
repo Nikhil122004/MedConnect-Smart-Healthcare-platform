@@ -12,7 +12,7 @@ function Navbar() {
       {/* Navigation Links */}
       <ul style={styles.navLinks}>
         <li><Link to="/" style={styles.link}>Home</Link></li>
-        <li><Link to="/" style={styles.link}>Services</Link></li>
+        <li><Link to="/services" style={styles.link}>Services</Link></li>
         <li><Link to="/appointment" style={styles.link}>Appointments</Link></li>
         <li><Link to="/about" style={styles.link}>About</Link></li>
         <li><Link to="/contact" style={styles.link}>Contact</Link></li>
@@ -35,9 +35,8 @@ const styles = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "12px 25px",
-    background: "#f6f2f2ff",
-    boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
-    position: "sticky",
+    background: "#201f20ff",
+    
     top: 0,
     zIndex: 1000,
     fontSize: "16px",
@@ -56,7 +55,7 @@ const styles = {
     fontSize: "22px",
     fontWeight: "bold",
     margin: 0,
-    color: "#333",
+    color: "#fbfafaff",
   },
   navLinks: {
     display: "flex",
@@ -67,9 +66,9 @@ const styles = {
     alignItems: "center",
   },
   link: {
-    color: "#333",
+    color: "#f7f5f5ff",
     textDecoration: "none",
-    fontSize: "18px",
+    fontSize: "20px",
     padding: "8px 12px",
     transition: "color 0.3s",
   },

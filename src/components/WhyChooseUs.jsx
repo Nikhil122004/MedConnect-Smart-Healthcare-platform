@@ -71,13 +71,16 @@ const WhyChooseUs = () => {
 const styles = {
   section: {
     textAlign: "center",
-    padding: "60px 20px",
-    background: "#f9f9f9",
+    padding: "40px 20px",
+    background: "#f5f7ff",
+    margin: "0rem",
+    borderRadius: "30px"
   },
   title: {
     fontSize: "36px",
     fontWeight: "bold",
     color: "#2d2d2d",
+    
     marginBottom: "10px",
   },
   subtitle: {
@@ -93,7 +96,8 @@ const styles = {
     margin: "0 auto",
   },
   card: {
-    background: "#fff",
+        background: "linear-gradient(135deg, rgba(24, 0, 0, 0.6), rgba(6, 86, 198, 0.6)), #3e4244ff",
+
     padding: "30px 20px",
     borderRadius: "16px",
     boxShadow: "0 6px 16px rgba(0, 0, 0, 0.1)",
@@ -110,24 +114,24 @@ const styles = {
   },
   icon: {
     fontSize: "32px",
-    color: "#fff",
+    color: "#100101ff",
   },
   cardTitle: {
     fontSize: "20px",
     fontWeight: "600",
     marginBottom: "10px",
-    color: "#333",
+    color: "#fcf2f2ff",
   },
   cardDesc: {
     fontSize: "14px",
-    color: "#555",
+    color: "#fbeeeeff",
     lineHeight: "1.6",
   },
   number: {
     marginTop: "10px",
-    background: "#060606ff",
-    color: "#fff",
-    fontSize: "14px",
+    background: "#f4ededff",
+    color: "#171515ff",
+    fontSize: "18px",
     fontWeight: "bold",
     borderRadius: "6px",
     padding: "4px 8px",

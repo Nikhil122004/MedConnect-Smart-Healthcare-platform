@@ -109,9 +109,10 @@
 .nearby-section {
   margin-top: 30px;
   padding: 20px;
-  background: #fff;
+  background: #0f0329;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: #f3f6f9;
 }
 
 .nearby-section h2 {
@@ -126,9 +127,65 @@
 }
 
 .hospital-card {
-  background: #f8f9fa;
-  padding: 15px;
+ background: linear-gradient(
+    135deg, 
+    #1d1d1d,   /* first color with transparency */
+    #053d74/* second color with transparency */
+  ); padding: 15px;
   border-radius: 8px;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #ebf1f7;
 }
+/* Today's Appointments Section */
+.appointments-section {
+  margin: 40px auto;
+  padding: 20px;
+  background: #ebf1f7; /* light red tint background */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.appointments-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  color: #333;
+}
+
+/* Table Styling */
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.appointments-table th,
+.appointments-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+/* Column headers with RED background */
+.appointments-table th {
+  background: #d32f2f;   /* red */
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.appointments-table tr{
+  background: #414141;
+  color: #f8f9fa;
+}
+/* Row hover effect */
+.appointments-table tr:hover {
+  background: #f9f9f9;
+  transition: 0.3s;
+  color: #044e99;
+}
+
